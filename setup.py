@@ -5,12 +5,22 @@ from setuptools import find_packages, setup
 
 PACKAGE_NAME = "cad_reflective_cns"
 
+dependencies = []
 with open("requirements/production.txt") as f:
-    requirements = parse_requirements(f)
+    for line in f:
+        line = line.strip()
+        if not line or line.startswith("#"):
+            continue
 
-    dependencies = [
-        *[str(req.req) for req in requirements]
-    ]
+        match = re.search(r"(\S+)==(\d+)\.(\d+)\.(\d+)", line)
+        if not match: 
+            continue
+
+        pkg, major, minor, patch = match.groups()
+        major = int(major)
+        minor = int(minor)
+        patch = int(patch)
+        dependencies.append(f"{pkg}>={major}.{minor}.{patch},<{major+1}")
 
 setup(
     name=PACKAGE_NAME,
