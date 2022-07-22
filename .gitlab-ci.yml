@@ -1,0 +1,5 @@
+variables:
+  PYTHON_VERSION: python3
+  PACKAGE_NAME: cad_reflective_cns
+
+include: 'https://gitlab.pbn.bnl.gov/sclark/ci-templates/-/raw/master/python-project.yml'
