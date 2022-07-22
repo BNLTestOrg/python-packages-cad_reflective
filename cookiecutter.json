@@ -2,5 +2,5 @@
     "_template": "git@gitlab.pbn.bnl.gov:cookiecutters/python-lib.git",
     "package_name": "cad_reflective_cns",
     "setup_gitlab_project": true,
-    "_template_hash": "0cf988b5e7c8b65034d2c0b14d91d161cc2b163e"
+    "_template_hash": "c54ae50f80a1d19fafd54e3c4b1ab8530f655893"
 }

@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import re
+
 from pkg_resources import parse_requirements
 from setuptools import find_packages, setup
 
