@@ -8,9 +8,9 @@ PACKAGE_NAME = "cad_reflective_cns"
 with open("requirements/production.txt") as f:
     requirements = parse_requirements(f)
 
-dependencies = [
-    *[str(req.req) for req in requirements]
-]
+    dependencies = [
+        *[str(req.req) for req in requirements]
+    ]
 
 setup(
     name=PACKAGE_NAME,

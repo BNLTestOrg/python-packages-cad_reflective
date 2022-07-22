@@ -17,4 +17,5 @@
 # For more help, see:
 # www.cadops.bnl.gov/Controls/ControlsWiki/index.php/Python_Package_Management
 
--r production.txt
+dbconn
+-e /home/cfsd/sclark/Documents/python/comms/cad_io

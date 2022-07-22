@@ -6,3 +6,5 @@
 #
 --find-links /ride/release/python/packages/
 
+file:///home/cfsd/sclark/Documents/python/comms/cad_io  # via -r requirements/production.in
+dbconn==1.1.3             # via -r requirements/production.in
