@@ -7,22 +7,23 @@ class CNSUnpacker(rpc.Unpacker):
         return value
 
     def unpack_mapping(self):
-        name = self.unpack_string().decode()
         host = self.unpack_string().decode()
         prog = self.unpack_uint()
         vers = self.unpack_uint()
         register_or_not = self.unpack_bool()
-        return name, host, prog, vers, register_or_not
+        names = [name.decode() for name in self.unpack_array(self.unpack_string)]
+        return names, host, prog, vers, register_or_not
 
 
 class CNSPacker(rpc.Packer):
     def pack_mapping(self, data):
-        name, host, prog, vers, register_or_not = data
-        self.pack_string(name.encode("ascii"))
+        names, host, prog, vers, register_or_not = data
+        # self.pack_string(name.encode("ascii"))
         self.pack_string(host.encode("ascii"))
         self.pack_uint(prog)
         self.pack_uint(vers)
         self.pack_bool(register_or_not)
+        self.pack_array([name.encode("ascii") for name in names], self.pack_string)
 
     def pack_generic(self, data):
         entryType, string2, entry, value, longA, longB, string3, string4, status = data

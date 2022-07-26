@@ -1,6 +1,7 @@
 import dataclasses
 import os
 import threading
+from typing import List
 
 from cad_io.cns import CNSClient, CNSData, cns_lookup
 
@@ -21,8 +22,8 @@ class ReflectiveCNSClient(CNSClient):
         self.packer = CNSPacker()
         self.unpacker = CNSUnpacker(b"")
 
-    def call_3(self, name: str, host: str, prog: int, vers: int, register_or_not: bool):
-        arg = name, host, prog, vers, register_or_not
+    def call_3(self, names: List[str], host: str, prog: int, vers: int, register_or_not: bool) -> List[int]:
+        arg = names, host, prog, vers, register_or_not
         return self.make_call(
-            3, arg, self.packer.pack_mapping, self.unpacker.unpack_uint
+            3, arg, self.packer.pack_mapping, lambda: self.unpacker.unpack_list(self.unpacker.unpack_uint)
         )

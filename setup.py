@@ -2,10 +2,9 @@
 
 import re
 
-from pkg_resources import parse_requirements
 from setuptools import find_packages, setup
 
-PACKAGE_NAME = "cad_reflective_cns"
+PACKAGE_NAME = "cad_reflective"
 
 dependencies = []
 with open("requirements/production.txt") as f:
